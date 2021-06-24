@@ -1,0 +1,80 @@
+RawLogger (Garmin ConnectIQ) App
+================================
+Usage instructions
+
+
+Controls
+--------
+
+Use the devices buttons to:
+ - UP/DOWN: browse through enabled data (see Settings below)
+ - SELECT:  start/stop(save) the Activity recording (to FIT file)
+ - BACK:    add a Lap to the Activity (or exit the application)
+ - MENU:    enter the Settings menu (when *not* recording an Activity)
+
+
+Settings
+--------
+
+Enter the Settings by pressing the MENU button (long-pressing the UP button).
+
+The main menu is divided in four sub-menus:
+ - System:   ConnectIQ.System.Stats data fields (battery+memory)
+ - Position: ConnectIQ.Position.Info data fields (all)
+ - Sensor:   ConnectIQ.Sensor.Info data fields (all)
+ - Activity: ConnectIQ.Activity.Info data fields (current)
+
+Please read the ConnectIQ developer documentation to learn more about each
+data class:
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/System/Stats.html
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Position/Info.html
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Sensor/Info.html
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Activity/Info.html
+As well as FIT-file "contributed" (custom) fields:
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/FitContributor/Field.html
+
+The enabled data fields will become browsable in the application (UP/DOWN
+buttons) and will be recorded to the FIT-file once the Activity is started
+(SELECT button).
+
+High-definition (HD) data fields values will only become available once the
+Activity has been started.
+
+Please note that ConnectIQ enforces limits on FIT-files:
+ - max. 16 data fields
+ - max. 256 bytes accross all data fields
+Enabled data fields that trespass those limits will be ignored.
+
+The Settings menu may *not* be entered while the Activity has been started
+and the FIT-file is being recorded.
+
+
+Analyzing FIT files
+-------------------
+
+If only a few data fields are recorded in the FIT-file and only coarse analysis
+is needed, you may visualize the data directly in Garmin Connect (website or
+mobile), provided you downloaded RawLogger from the Garmin Store. Please note
+that Garmin apparently imposes a limit on the quantity of custom data fields
+that may be displayed in Garmin Connect.
+
+If you need to perform a detailed analysis of the data (or recorded more data
+fields tha Gamin Connect is willing to display), please use the FIT SDK:
+
+1. Download and install (unzip) the FIT SDK
+
+    https://www.thisisant.com/resources/fit/
+
+2. Retrieve the FIT-file directly from your device or download/unzip it from
+   Garmin Connect (Gear Icon -> Export Original)
+
+    https://connect.garmin.com/modern/activity/<activity-ID>
+
+3. Convert the FIT-file to CSV
+
+    java -jar /path/to/FIT-SDK/java/FitCSVTool.jar -b <acivity-ID>.fit <activity-ID>.csv --data record
+
+4. Open the CSV *data* file using LibreOffice Calc (or Microsoft Excel)
+
+    /path/to/LibreOffice/program/soffice <activity-ID>_data.csv
+

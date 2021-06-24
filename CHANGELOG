@@ -1,0 +1,22 @@
+* 1.0.20190520a:
+  - NEW: Support MARQ serie, DescentMk1 and Forerunner 245/945
+
+* 1.0.20190102a:
+  - NEW: Added high-definition Sensor.Acceleration (HD) data field
+
+* 1.0.20180922a:
+  - FIX: FIT fields IDs must be between 0 and 255 (bis)
+
+* 1.0.20180920a:
+  - FIX: FIT fields IDs must be between 0 and 255
+
+* 1.0.20180907a:
+  - Added "Analyzing FIT files" section to the USAGE file
+  - Added doumentation pointers to the USAGE file
+  - Devel: update default (d2charlie) CIQ target version to be compatible with SDK 3.0.2
+  - Included meanSeaLevelPressure in Activity's Pressure data fields
+  - Added System.Stats (battery and memory) data fields
+
+* 1.0.20180830a:
+  - Post Tenebras Lux
+
